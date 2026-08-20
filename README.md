@@ -1,5 +1,10 @@
 # DrfGoldTracker
 
+<img width="484" height="539" alt="image" src="https://github.com/user-attachments/assets/068b6341-425a-48e5-a8f7-9fe4dd67d068" />
+<img width="477" height="532" alt="image" src="https://github.com/user-attachments/assets/0486884a-4b59-4527-b876-aa03e2acfd93" />
+<img width="655" height="911" alt="image" src="https://github.com/user-attachments/assets/9a6698a8-fe3a-4a67-b63c-d75ce775ff9d" />
+
+
 A [Nexus](https://github.com/RaidcoreGG/Nexus) addon for Guild Wars 2 that tracks gold and item
 farming in real time, using [DRF](https://drf.rs)'s live drop feed.
 
