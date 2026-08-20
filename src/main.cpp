@@ -361,6 +361,22 @@ static void StopAutosaveThread()
     }
 }
 
+// Unlike g_drfClient/g_gw2Api/g_iconCache (each a class instance whose own
+// destructor guarantees Stop() runs), g_autosaveThread is a bare std::thread
+// with no wrapping object - StopAutosaveThread() only ever runs from
+// Unload()'s first try block. If that block throws before reaching it
+// (caught further down, so Unload() still "completes"), or if Nexus tears
+// down the DLL at process exit without calling Unload() at all, this thread
+// is left joinable. std::thread's destructor calls std::terminate() (abort())
+// on a still-joinable thread rather than quietly joining/detaching it - this
+// guard's destructor is the safety net: as a static declared after the
+// autosave globals, it's destroyed before them (reverse declaration order
+// within the same translation unit), so it gets one last chance to stop and
+// join the thread before it would otherwise reach a bare, unsafe destructor.
+static struct AutosaveThreadShutdownGuard {
+    ~AutosaveThreadShutdownGuard() { StopAutosaveThread(); }
+} g_autosaveThreadShutdownGuard;
+
 // Recomputes and persists g_settings.nextResetUtcEpochSeconds for the
 // currently selected schedule. Never/OnAddonLoad have no fixed future
 // timestamp to wait for (see ResetScheduler::ComputeNextResetUtc), so their
