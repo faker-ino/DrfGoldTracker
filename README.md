@@ -12,20 +12,6 @@ Connects to DRF over websocket, accumulates item/currency deltas into a running 
 and displays them in an ImGui overlay with trading-post/vendor profit estimates, sortable
 table and icon-grid views, and configurable filters/favorites.
 
-## Build
-
-Requires [vcpkg](https://github.com/microsoft/vcpkg) (with `VCPKG_ROOT` set in the environment)
-and [Ninja](https://ninja-build.org/) on `PATH`. Must be built x64.
-
-```
-cmake --preset x64-debug      # or x64-release
-cmake --build --preset x64-debug
-```
-
-The output DLL lands in `out/build/<preset>/DrfGoldTracker.dll`. To run it, copy the DLL into
-`<Guild Wars 2>/addons/DrfGoldTracker/` and launch the game with
-[Nexus](https://github.com/RaidcoreGG/Nexus) installed - it's loaded into the live game process
-and can't be run standalone.
 
 ## Credits
 
