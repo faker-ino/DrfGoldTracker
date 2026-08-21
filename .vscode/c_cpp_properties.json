@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "name": "x64-debug",
+      "configurationProvider": "ms-vscode.cmake-tools",
+      "includePath": [
+        "${workspaceFolder}/src/**",
+        "${workspaceFolder}/vendor/nexus",
+        "${workspaceFolder}/vendor/imgui"
+      ],
+      "defines": [
+        "WIN32_LEAN_AND_MEAN",
+        "NOMINMAX"
+      ],
+      "compilerPath": "cl.exe",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "windows-msvc-x64"
+    }
+  ],
+  "version": 4
+}
